@@ -22,4 +22,5 @@ Imports:
     dplyr,
     stringr,
     stats,
-    magrittr
+    magrittr,
+    ggplot2
