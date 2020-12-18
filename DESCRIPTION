@@ -1,0 +1,25 @@
+Package: mcguiR
+Title: Quick Plotting For Comparing Logisitc Regression Models
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Bridget",
+           family = "McGuire",
+           role = c("aut", "cre"),
+           email = c("bridget.mcguire46@gmail.comc", "bmcguir8@jhmi.edu"),
+           comment = c(ORCID = 0000-0002-4701-3971))
+Description: Generating plots to compare different aspects of logistic regression
+    modeling is tough, so I wrote a bunch of functions that ease the burden a bit!  
+    This package includes functions that calculate the accuracy of the model at
+    different probability cutoffs (and plots it), calculates the TPR and FPR at 
+    each different probability cuttoff for ROC plots and AUC calculuations, 
+    as well as general useful modeling plots.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports: 
+    dplyr,
+    stringr,
+    stats,
+    magrittr
