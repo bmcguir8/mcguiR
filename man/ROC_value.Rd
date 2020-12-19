@@ -11,13 +11,13 @@ ROC_value(model, data, ind_column, success, failure, na.rm = T)
 
 \item{data}{training/testing data to use with model, MUST include all predictors in model}
 
-\item{ind_column}{independent variable column in dataset - please use data$column syntax}
+\item{ind_column}{independent (outcome) variable column in dataset - please use data$column syntax}
 
-\item{success}{character vector; how success is coded in data}
+\item{success}{character vector; how 'success' is coded in data}
 
-\item{failure}{character vector; how failure is coded in data}
+\item{failure}{character vector; how 'failure' is coded in data}
 
-\item{na.rm}{when T, only returns probability thresholds that have values for both TPR and FPR}
+\item{na.rm}{when T, only returns probability thresholds that have values for both 'TPR' and 'FPR' values}
 }
 \value{
 data frame with TPR, FPR and Probability Threshold columns

@@ -4,10 +4,10 @@
 #'
 #' @param model regression model to be used
 #' @param data training/testing data to use with model, MUST include all predictors in model
-#' @param ind_column independent variable column in dataset - please use data$column syntax
-#' @param success character vector; how success is coded in data
-#' @param failure character vector; how failure is coded in data
-#' @param na.rm when T, only returns probability thresholds that have values for both TPR and FPR
+#' @param ind_column independent (outcome) variable column in dataset - please use data$column syntax
+#' @param success character vector; how 'success' is coded in data
+#' @param failure character vector; how 'failure' is coded in data
+#' @param na.rm when T, only returns probability thresholds that have values for both 'TPR' and 'FPR' values
 #'
 #' @return data frame with TPR, FPR and Probability Threshold columns
 #' @export

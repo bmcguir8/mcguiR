@@ -2,5 +2,6 @@
 
 export("%>%")
 export(ROC_value)
+export(accuracy)
 export(roc_plot)
 importFrom(magrittr,"%>%")
