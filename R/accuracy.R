@@ -1,4 +1,4 @@
-#' Title
+#' Calculate the Accuracy of the Model at Each Probability Cutoff
 #'
 #' @param model regression model to be used
 #' @param data training/testing data to use with model, MUST include all predictors in model
