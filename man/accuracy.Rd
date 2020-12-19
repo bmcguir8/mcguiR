@@ -2,7 +2,7 @@
 % Please edit documentation in R/accuracy.R
 \name{accuracy}
 \alias{accuracy}
-\title{Title}
+\title{Calculate the Accuracy of the Model at Each Probability Cutoff}
 \usage{
 accuracy(model, data, ind_column, success, failure, na.rm = T)
 }
@@ -23,5 +23,5 @@ accuracy(model, data, ind_column, success, failure, na.rm = T)
 data frame with \% correct calls ('correct'), \% incorrect calls ('incorrect') and the probability threshold
 }
 \description{
-Title
+Calculate the Accuracy of the Model at Each Probability Cutoff
 }
