@@ -25,3 +25,10 @@ data frame with TPR, FPR and Probability Threshold columns
 \description{
 Only supports binary logistic regression at this time
 }
+\examples{
+\dontrun{
+iris2 <- iris[stringr::str_detect(Species, "setosa", negate = T), ]
+irismodel <- glm(Species ~ ., data = iris2, family = binomial)
+roc_value <- ROC_value(irismodel, iris2, iris2$Species, "virginica",
+"versicolor")}
+}

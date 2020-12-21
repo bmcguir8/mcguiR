@@ -6,6 +6,13 @@
 #' @return plot with FPR on the x axis and TPR on the y axis
 #' @export
 #'
+#' @examples
+#' \dontrun{
+#' iris2 <- iris[stringr::str_detect(Species, "setosa", negate = T), ]
+#' irismodel <- glm(Species ~ ., data = iris2, family = binomial)
+#' roc_value <- ROC_value(irismodel, iris2, iris2$Species, "virginica",
+#' "versicolor")
+#' ROC_plot(roc_value, title = "This Plot ROCs")}
 ROC_plot <- function(ROC_data, method = "loess", title = "") {
     ggplot2::ggplot(ROC_data, ggplot2::aes(y = TPR, x = FPR)) +
         ggplot2::geom_point(size = 0.3, alpha = 0.5, color = "#9E0142") +

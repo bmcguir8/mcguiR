@@ -37,5 +37,13 @@ abs(standard) will be returned}
 a data frame
 }
 \description{
-only supports binary logistic regression at this time
+only supports binary logistic regression at this time.
+doesn't work when dfbeta(model) is inclueded - recomment still looking at
+these values outside of this function
+}
+\examples{
+\dontrun{
+iris2 <- iris[stringr::str_detect(Species, "setosa", negate = T), ]
+irismodel <- glm(Species ~ ., data = iris2, family = binomial)
+problem_samples(irismodel, iris2, k = 4)}
 }

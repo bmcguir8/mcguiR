@@ -1,6 +1,8 @@
 #' Find Problem Samples within Training Dataset
 #'
-#' only supports binary logistic regression at this time
+#' only supports binary logistic regression at this time.
+#' doesn't work when dfbeta(model) is inclueded - recomment still looking at
+#' these values outside of this function
 #'
 #' @param model the model to be used
 #' @param data TRAINING data set
@@ -18,6 +20,10 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' iris2 <- iris[stringr::str_detect(Species, "setosa", negate = T), ]
+#' irismodel <- glm(Species ~ ., data = iris2, family = binomial)
+#' problem_samples(irismodel, iris2, k = 4)}
 problem_samples <- function(model, data, k, standard = 2.0,
                             student = 2.0, df_fits = 1.0,
                             cooks = 1.0) {

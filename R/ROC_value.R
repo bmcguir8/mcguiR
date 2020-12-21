@@ -13,7 +13,12 @@
 #' @return data frame with TPR, FPR and Probability Threshold columns
 #' @export
 #'
-#'
+#' @examples
+#' \dontrun{
+#' iris2 <- iris[stringr::str_detect(Species, "setosa", negate = T), ]
+#' irismodel <- glm(Species ~ ., data = iris2, family = binomial)
+#' roc_value <- ROC_value(irismodel, iris2, iris2$Species, "virginica",
+#' "versicolor")}
 ROC_value <- function(model, data, ind_column, success, failure, na.rm = T) {
     true <- vector()
     false <- vector()

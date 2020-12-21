@@ -17,3 +17,10 @@ a plot of accuracy at each probability threshold
 \description{
 only supports binary logistic regression at this time
 }
+\examples{
+\dontrun{
+iris2 <- iris[stringr::str_detect(Species, "setosa", negate = T), ]
+irismodel <- glm(Species ~ ., data = iris2, family = binomial)
+acc_data <- accuracy(irismodel, iris2, iris2$Species, "virginica", "versicolor")
+acc_plot(acc_data, y = "both")}
+}

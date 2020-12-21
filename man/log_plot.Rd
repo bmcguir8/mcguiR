@@ -17,3 +17,9 @@ plot of predictors vs. logit
 \description{
 only supports binary logistic regression at this time
 }
+\examples{
+\dontrun{
+iris2 <- iris[stringr::str_detect(Species, "setosa", negate = T), ]
+irismodel <- glm(Species ~ ., data = iris2, family = binomial)
+log_plot(irismodel, iris2)}
+}
