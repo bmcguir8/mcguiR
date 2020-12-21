@@ -1,5 +1,7 @@
 #' Calculate the Accuracy of the Model at Each Probability Cutoff
 #'
+#' only supports binary logistic regression at this time
+#'
 #' @param model regression model to be used
 #' @param data training/testing data to use with model, MUST include all predictors in model
 #' @param ind_column independent (outcome) variable column in data - please use data$column syntax

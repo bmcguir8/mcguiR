@@ -1,10 +1,13 @@
 #' Plot continuous predictors against the logit
 #'
+#' only supports binary logistic regression at this time
+#'
 #' @param model the model to use
 #' @param data the data to use, MUST include all the predictors found in model
 #' @return plot of predictors vs. logit
 #' @export
 #'
+#' @importFrom ggplot2 facet_wrap
 #' @examples
 log_plot <- function(model, data) {
     pred <- stats::predict(model, data, type = "response")

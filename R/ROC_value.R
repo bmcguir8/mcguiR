@@ -9,6 +9,7 @@
 #' @param failure character vector; how 'failure' is coded in data
 #' @param na.rm when T, only returns probability thresholds that have values for both 'TPR' and 'FPR' values
 #'
+#' @importFrom stats predict
 #' @return data frame with TPR, FPR and Probability Threshold columns
 #' @export
 #'

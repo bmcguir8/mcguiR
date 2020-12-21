@@ -15,5 +15,5 @@ log_plot(model, data)
 plot of predictors vs. logit
 }
 \description{
-Plot continuous predictors against the logit
+only supports binary logistic regression at this time
 }

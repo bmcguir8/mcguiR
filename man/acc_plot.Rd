@@ -15,5 +15,5 @@ acc_plot(accuracy_data, y = "correct")
 a plot of accuracy at each probability threshold
 }
 \description{
-Plot Model Accuracy
+only supports binary logistic regression at this time
 }

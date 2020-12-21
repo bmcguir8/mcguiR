@@ -23,5 +23,5 @@ accuracy(model, data, ind_column, success, failure, na.rm = T)
 data frame with \% correct calls ('correct'), \% incorrect calls ('incorrect') and the probability threshold
 }
 \description{
-Calculate the Accuracy of the Model at Each Probability Cutoff
+only supports binary logistic regression at this time
 }
