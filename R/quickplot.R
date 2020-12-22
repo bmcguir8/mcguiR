@@ -21,7 +21,7 @@ quickplot <- function(model, data, ind_column, title) {
         dplyr::arrange(pred) %>%
         dplyr::mutate(rank = 1:nrow(data))
     if(is.factor(pred$Success) == F) {
-        pred <- dplyr::mutate(Success = factor(ind_column))
+        pred <- dplyr::mutate(pred, Success = factor(ind_column))
     }
 
     ggplot2::ggplot(data = pred, ggplot2::aes(x = rank, y = pred, color = Success)) +
