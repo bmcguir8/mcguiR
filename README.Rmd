@@ -70,11 +70,15 @@ ROC_plot(roc, title = "This Plot ROCs!")
 AUC_wrapper(roc)
 ```
 
-Finally, there is a function that identifies 'problem samples' for you. It comes with a few values filled in for you: standard (standardized residuals), student (studentized residuals), df_fits (DFFITS), and cooks (Cook's distance).  The function will return all data points with values greater than or equal to what these are set to.
+There is a function that identifies 'problem samples' for you. It comes with a few values filled in for you: standard (standardized residuals), student (studentized residuals), df_fits (DFFITS), and cooks (Cook's distance).  The function will return all data points with values greater than or equal to what these are set to.
 
 ```{r problem}
 middlechild <- problem_samples(irismodel, iris2, k = 4)
 kable(head(middlechild))
 ```
 
-More to come!!
+Finally, you can use log_plot() when you need to see the relationship between continuous predictors and the logit of your outcome.
+
+```{r log}
+log_plot(irismodel, iris2)
+```
