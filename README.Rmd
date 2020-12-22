@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r}
-library(knitr)
+library(knitr, include = F)
 ```
 
 # mcguiR
