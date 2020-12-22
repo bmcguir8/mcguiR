@@ -1,4 +1,4 @@
-#' Plot Samples by their Predicted Probabilites
+#' Plot Samples by their Predicted Probabilities
 #'
 #' only supports binary logistic regression at this time.
 #'
@@ -20,6 +20,9 @@ quickplot <- function(model, data, ind_column, title) {
                        Success = ind_column) %>%
         dplyr::arrange(pred) %>%
         dplyr::mutate(rank = 1:nrow(data))
+    if(is.factor(pred$Success) == F) {
+        pred <- dplyr::mutate(Success = factor(ind_column))
+    }
 
     ggplot2::ggplot(data = pred, ggplot2::aes(x = rank, y = pred, color = Success)) +
         ggplot2::geom_point() + ggplot2::scale_color_manual(values = c("#D53E4F", "#66C2A5")) +

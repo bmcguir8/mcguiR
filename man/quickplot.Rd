@@ -2,7 +2,7 @@
 % Please edit documentation in R/quickplot.R
 \name{quickplot}
 \alias{quickplot}
-\title{Plot Samples by their Predicted Probabilites}
+\title{Plot Samples by their Predicted Probabilities}
 \usage{
 quickplot(model, data, ind_column, title)
 }
