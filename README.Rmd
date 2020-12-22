@@ -1,0 +1,78 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+```{r}
+library(knitr)
+```
+
+# mcguiR
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+mcguiR aims to provide functions that ease the burden of determining how well a 
+model performs, as well as comparing between models.  Unfortunately, it only
+supports binary logistic regression (for now!).  
+
+## Installation
+
+Install from GitHub using:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("bmcguir8/mcguiR")
+```
+## Using the Functions
+
+Since this package is only equipped to deal with binary logistic regression 
+modeling, we'll need to edit one of the better known R datasets to show some examples:
+
+```{r example}
+data("iris")
+iris2 <- iris[stringr::str_detect(iris$Species, "setosa", negate = T), ]
+irismodel <- glm(Species ~ ., data = iris2, family = binomial)
+
+library(mcguiR)
+```
+
+To do this, we're just going to remove all the rows where Species == "setosa" within the iris dataset, and generating a model using it.
+Now, to see the functions in action!
+
+accuracy() and acc_plot() used together gives you a plot of the percent of 'calls' that are correct or incorrect from your model at each probability threshold (where every sample with a predicted probability above this cut off is deemed a 'success' and everything below is a 'failure' - in this case, virginica is 'success').
+```{r accuracy}
+acc_data <- accuracy(irismodel, iris2, iris2$Species, "virginica", "versicolor")
+acc_plot(acc_data, y = "both")
+```
+
+You might also want to see how well your model ranked individual samples compared to their true call.  You can do this with quickplot(), which gives you each sample, colored by their actual category, and ranked in ascending order of predicted probability.  This is a good way to tell if your model gets a little blurry towards the middle, or one specific side:
+
+```{r quickplot}
+quickplot(irismodel, iris2, iris2$Species, "Quick Plot!")
+```
+
+There are also functions for calculating the TPR (True Positive Rate) and FPR (False Positive Rate) for your model at each probability cutoff, ROC_value() and then plotting these values, ROC_plot().  You will also find a wrapper function for DescTools::AUC(), that fills in x and y for you to save time.
+
+```{r ROC}
+roc <- ROC_value(irismodel, iris2, iris2$Species, "virginica", "versicolor")
+ROC_plot(roc, title = "This Plot ROCs!")
+AUC_wrapper(roc)
+```
+
+Finally, there is a function that identifies 'problem samples' for you. It comes with a few values filled in for you: standard (standardized residuals), student (studentized residuals), df_fits (DFFITS), and cooks (Cook's distance).  The function will return all data points with values greater than or equal to what these are set to.
+
+```{r problem}
+middlechild <- problem_samples(irismodel, iris2, k = 4)
+kable(head(middlechild))
+```

@@ -22,7 +22,7 @@ quickplot <- function(model, data, ind_column, title) {
         dplyr::mutate(rank = 1:nrow(data))
 
     ggplot2::ggplot(data = pred, ggplot2::aes(x = rank, y = pred, color = Success)) +
-        ggplot2::geom_point() + ggplot2::scale_color_manual(values = c("#66C2A5", "#D53E4F")) +
-        ggplot2::ylab("Probability of Success") + ggplot2::xlab(ggplot2::element_blank()) +
+        ggplot2::geom_point() + ggplot2::scale_color_manual(values = c("#D53E4F", "#66C2A5")) +
+        ggplot2::ylab("Probability of 'Success'") + ggplot2::xlab(ggplot2::element_blank()) +
         ggplot2::labs(title = title)
 }

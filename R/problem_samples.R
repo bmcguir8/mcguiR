@@ -1,7 +1,7 @@
 #' Find Problem Samples within Training Dataset
 #'
 #' only supports binary logistic regression at this time.
-#' doesn't work when dfbeta(model) is inclueded - recomment still looking at
+#' doesn't work when dfbeta(model) is included - recommend still looking at
 #' these values outside of this function
 #'
 #' @param model the model to be used
@@ -34,10 +34,10 @@ problem_samples <- function(model, data, k, standard = 2.0,
                          leverage = stats::hatvalues(model),
                          expected_levarage = ((k + 1)/nrow(data)),
                          cooks_distance = stats::cooks.distance(model))
-    std_r <- abs(dat$standard_residuals) > standard
-    stud_r <- abs(dat$student_residuals) > student
-    fits <- abs(dat$df_fits) > df_fits
-    cook <- dat$cooks_distance > cooks
+    std_r <- abs(dat$standard_residuals) >= standard
+    stud_r <- abs(dat$student_residuals) >= student
+    fits <- abs(dat$df_fits) >= df_fits
+    cook <- dat$cooks_distance >= cooks
     simple <- (std_r + stud_r + fits + cook) > 0
     dat[simple, ]
 }

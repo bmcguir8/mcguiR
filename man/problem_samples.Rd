@@ -38,7 +38,7 @@ a data frame
 }
 \description{
 only supports binary logistic regression at this time.
-doesn't work when dfbeta(model) is inclueded - recomment still looking at
+doesn't work when dfbeta(model) is included - recommend still looking at
 these values outside of this function
 }
 \examples{

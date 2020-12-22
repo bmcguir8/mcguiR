@@ -16,29 +16,37 @@
 #' acc_data <- accuracy(irismodel, iris2, iris2$Species, "virginica", "versicolor")
 #' acc_plot(acc_data, y = "both")}
 acc_plot <- function(accuracy_data, y = "correct") {
-    if(y == "correct") {
-        ggplot2::ggplot(data = accuracy_data, ggplot2::aes(x = threshold)) +
+        c <- ggplot2::ggplot(data = accuracy_data, ggplot2::aes(x = threshold)) +
             ggplot2::geom_line(ggplot2::aes(y = correct, color = "#66C2A5")) +
             ggplot2::theme(legend.position = "none") +
             ggplot2::xlab("Probability Threshold") +
             ggplot2::ylab("Percent Correct (%)") +
             ggplot2::labs(title = "Accuracy at Different Probability Thresholds")
-    }
-    if(y == "incorrect") {
-        ggplot2::ggplot(data = accuracy_data, ggplot2::aes(x = threshold)) +
+
+        i <- ggplot2::ggplot(data = accuracy_data, ggplot2::aes(x = threshold)) +
             ggplot2::geom_line(aes(y = incorrect, color = "#D53E4F")) +
             ggplot2::theme(legend.position = "none") +
             ggplot2::xlab("Probability Threshold") +
             ggplot2::ylab("Percent Incorrect (%)") +
             ggplot2::labs(title = "Accuracy at Different Probability Thresholds")
-    }
-    if(y == "both") {
-        ggplot2::ggplot(data = accuracy_data, ggplot2::aes(x = threshold)) +
-            ggplot2::geom_line(aes(y = correct, color = "#66C2A5")) +
-            ggplot2::geom_line(aes(y = incorrect, color = "#D53E4F")) +
-            ggplot2::theme(legend.position = "none") +
+
+        long <- tidyr::pivot_longer(accuracy_data, -threshold)
+
+        b <- ggplot2::ggplot(data = long) +
+            ggplot2::geom_line(ggplot2::aes(y = value, x = threshold,
+                                            color = name)) +
+            ggplot2::scale_color_manual(values = c("#66C2A5", "#D53E4F")) +
+            ggplot2::theme(legend.title = ggplot2::element_blank()) +
             ggplot2::xlab("Probability Threshold") +
             ggplot2::ylab("Percent (%)") +
             ggplot2::labs(title = "Accuracy at Different Probability Thresholds")
+    if(y == "correct") {
+        return(c)
+    }
+    if(y == "incorrect") {
+        return(i)
+    }
+    if(y == "both") {
+        return(b)
     }
 }
