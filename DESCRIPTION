@@ -6,7 +6,7 @@ Authors@R:
            family = "McGuire",
            role = c("aut", "cre"),
            email = c("bridget.mcguire46@gmail.comc", "bmcguir8@jhmi.edu"),
-           comment = c(ORCID = 0000-0002-4701-3971))
+           comment = c(https://orcid.org/0000-0002-4701-3971))
 Description: Generating plots to compare different aspects of logistic regression
     modeling is tough, so I wrote a bunch of functions that ease the burden a bit!  
     This package includes functions that calculate the accuracy of the model at
