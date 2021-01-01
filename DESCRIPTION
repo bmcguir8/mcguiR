@@ -1,5 +1,5 @@
 Package: mcguiR
-Title: Quick Plotting For Comparing Logisitc Regression Models
+Title: Quick Plotting For Comparing Regression Models
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Bridget",
