@@ -21,7 +21,8 @@
 accuracy.lm <- function(model, data, ind_column, round = 2, output = "data") {
     pred <- stats::predict(model, data) %>% round(digits = round)
     dat <- data.frame(ind_column, pred) %>% dplyr::mutate(diff = ind_column - pred)
-    g <- ggplot2::ggplot(data = dat, ggplot2::aes(x = dat[,3])) +
+    diff <- unlist(dat[,3])
+    g <- ggplot2::ggplot(data = dat, ggplot2::aes(x = diff)) +
             ggplot2::geom_bar(stat = "bin", fill = "light blue", bins = 30,
                               color = "black") +
             ggplot2::xlab("Actual Value - Predicted Value") +
